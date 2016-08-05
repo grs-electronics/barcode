@@ -45,17 +45,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'BarCodeCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.barcode', {
+      url: '/barcode',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-barcodes': {
+          templateUrl: 'templates/tab-barcodes.html',
+          controller: 'BarcodeListCtrl'
         }
       }
     })

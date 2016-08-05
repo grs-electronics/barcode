@@ -25,4 +25,29 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+})
+.controller('BarCodeCtrl',function ($scope, $cordovaBarcodeScanner,Barcodes){
+    $scope.codigo="Ninguno";
+    $scope.scanBarCode=function () {
+      $cordovaBarcodeScanner.scan().then(function(imageData) {
+          // Success! Barcode data is here
+          $scope.codigo=  imageData.text;
+          alert(imageData.text);
+          Barcodes.add(imageData.text);
+          console.log("Barcode Format -> " + imageData.format);
+          console.log("Cancelled -> " + imageData.cancelled);
+        }, function(error) {
+          // An error occurred
+          console.log("An error happened -> " + error);
+        });
+    }
+
+})
+.controller('BarcodeListCtrl',function ($scope,Barcodes){
+  $scope.barCodeList=Barcodes.all();
+  $scope.remove=function (code) {
+    Barcodes.remove(code);
+  }
+
 });
+
